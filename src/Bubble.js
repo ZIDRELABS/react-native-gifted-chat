@@ -145,17 +145,56 @@ export default class Bubble extends React.Component {
     return null;
   }
 
-  render() {
+  renderResponseText(){
     return (
-    <Container>
+     <Container
+        style={[
+        styles[this.props.position].container,
+        this.props.containerStyle[this.props.position],
+        ]}
+        >
      <Content>
-      <Card
+        <TouchableWithoutFeedback
+          onLongPress={this.onLongPress}
+          accessibilityTraits="text"
+            {...this.props.touchableProps}>
+        <Card
+          style={[
+            styles[this.props.position].wrapper,
+            this.props.wrapperStyle[this.props.position],
+            this.handleBubbleToNext(),
+            this.handleBubbleToPrevious(),
+          ]}
+        >
+        <CardItem>
+            {this.renderCustomView()}
+        </CardItem>
+        <CardItem>
+            {this.renderMessageImage()}
+        </CardItem>
+        <CardItem>
+            {this.renderMessageText()}
+        </CardItem>
+        <CardItem footer style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
+              {this.renderTime()}
+              {this.renderTicks()}
+        </CardItem>
+        </Card>
+    </TouchableWithoutFeedback>
+      </Content>
+    </Container>
+    );
+  }
+
+  renderUserText(){
+    return(
+      <View
         style={[
           styles[this.props.position].container,
           this.props.containerStyle[this.props.position],
         ]}
       >
-        <CardItem
+        <View
           style={[
             styles[this.props.position].wrapper,
             this.props.wrapperStyle[this.props.position],
@@ -168,21 +207,28 @@ export default class Bubble extends React.Component {
             accessibilityTraits="text"
             {...this.props.touchableProps}
           >
-            <CardItem>
+            <View>
               {this.renderCustomView()}
               {this.renderMessageImage()}
               {this.renderMessageText()}
-              <CardItem footer style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
+              <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
                 {this.renderTime()}
                 {this.renderTicks()}
-              </CardItem>
-            </CardItem>
+              </View>
+            </View>
           </TouchableWithoutFeedback>
-        </CardItem>
-      </Card>
-      </Content>
-    </Container>
+        </View>
+      </View>
     );
+  }
+
+  render() {
+      if(this.props.position == 'right'){
+        this.renderUserText()
+      }
+      return(
+        this.renderResponseText()
+      );
   }
 
 }
@@ -213,10 +259,6 @@ const styles = {
       alignItems: 'flex-end',
     },
     wrapper: {
-      borderRadius: 15,
-      backgroundColor: Color.defaultBlue,
-      marginLeft: 60,
-      minHeight: 20,
       justifyContent: 'flex-end',
     },
     containerToNext: {
