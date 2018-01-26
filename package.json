@@ -32,8 +32,9 @@
   },
   "jest": {
     "preset": "react-native",
-    "transformIgnorePatterns": ["node_modules/(?!|native-base-shoutem-theme)"
-  ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!|native-base-shoutem-theme|setupDevtools)"
+    ],
     "setupFiles": [
       "./tests/setup.js"
     ]
@@ -59,6 +60,7 @@
     "@expo/react-native-action-sheet": "^1.0.1",
     "md5": "2.2.1",
     "moment": "^2.19.0",
+    "native-base": "^2.3.7",
     "prop-types": "15.6.0",
     "react-native-communications": "2.2.1",
     "react-native-invertible-scroll-view": "^1.1.0",

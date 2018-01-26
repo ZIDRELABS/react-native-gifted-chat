@@ -56,10 +56,17 @@ exports[`should render <Message /> and compare with snapshot 1`] = `
     </View>
     <View
       style={
-        Object {
-          "flex": 1,
-          "height": 1334,
-        }
+        Array [
+          Object {
+            "flex": 1,
+            "height": 1334,
+          },
+          Object {
+            "alignItems": "flex-start",
+            "flex": 1,
+          },
+          undefined,
+        ]
       }
       virtual={undefined}
     >
@@ -106,6 +113,19 @@ exports[`should render <Message /> and compare with snapshot 1`] = `
       >
         <View>
           <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits="text"
+            accessible={true}
+            hitSlop={undefined}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
@@ -132,20 +152,73 @@ exports[`should render <Message /> and compare with snapshot 1`] = `
                   "shadowRadius": 1.5,
                 },
                 Object {
-                  "alignItems": "flex-start",
-                  "flex": 1,
+                  "backgroundColor": "#f0f0f0",
+                  "borderRadius": 15,
+                  "justifyContent": "flex-end",
+                  "marginRight": 60,
+                  "minHeight": 20,
                 },
                 undefined,
+                null,
+                null,
               ]
             }
+            testID={undefined}
             virtual={undefined}
           >
             <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#fff",
+                  "borderRadius": 2,
+                  "flexDirection": "row",
+                  "paddingBottom": 10,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 10,
+                }
+              }
+              virtual={undefined}
+            />
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#fff",
+                  "borderRadius": 2,
+                  "flexDirection": "row",
+                  "paddingBottom": 10,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 10,
+                }
+              }
+              virtual={undefined}
+            />
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#fff",
+                  "borderRadius": 2,
+                  "flexDirection": "row",
+                  "paddingBottom": 10,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 10,
+                }
+              }
+              virtual={undefined}
+            />
+            <View
+              footer={true}
               style={
                 Array [
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "#fff",
+                    "borderBottomWidth": null,
                     "borderRadius": 2,
                     "flexDirection": "row",
                     "paddingBottom": 10,
@@ -154,74 +227,14 @@ exports[`should render <Message /> and compare with snapshot 1`] = `
                     "paddingTop": 10,
                   },
                   Object {
-                    "backgroundColor": "#f0f0f0",
-                    "borderRadius": 15,
+                    "flexDirection": "row",
                     "justifyContent": "flex-end",
-                    "marginRight": 60,
-                    "minHeight": 20,
                   },
                   undefined,
-                  null,
-                  null,
                 ]
               }
               virtual={undefined}
-            >
-              <View
-                accessibilityComponentType={undefined}
-                accessibilityLabel={undefined}
-                accessibilityTraits="text"
-                accessible={true}
-                hitSlop={undefined}
-                nativeID={undefined}
-                onLayout={undefined}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#fff",
-                    "borderRadius": 2,
-                    "flexDirection": "row",
-                    "paddingBottom": 10,
-                    "paddingLeft": 15,
-                    "paddingRight": 15,
-                    "paddingTop": 10,
-                  }
-                }
-                testID={undefined}
-                virtual={undefined}
-              >
-                <View
-                  footer={true}
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#fff",
-                        "borderBottomWidth": null,
-                        "borderRadius": 2,
-                        "flexDirection": "row",
-                        "paddingBottom": 10,
-                        "paddingLeft": 15,
-                        "paddingRight": 15,
-                        "paddingTop": 10,
-                      },
-                      Object {
-                        "flexDirection": "row",
-                        "justifyContent": "flex-end",
-                      },
-                      undefined,
-                    ]
-                  }
-                  virtual={undefined}
-                />
-              </View>
-            </View>
+            />
           </View>
         </View>
       </RCTScrollView>
