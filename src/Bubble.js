@@ -186,7 +186,6 @@ export default class Bubble extends React.Component {
 
   renderUserText(){
     return(
-      return(
         <View
           style={[
             styles[this.props.position].container,
@@ -221,7 +220,6 @@ export default class Bubble extends React.Component {
           </View>
         </View>
       );
-    );
   }
 
   render() {
