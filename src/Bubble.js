@@ -171,18 +171,10 @@ export default class Bubble extends React.Component {
            <Content>
            <Card>
                <CardItem>
-                    {this.renderCustomView()}
-               </CardItem>
-               <CardItem>
+                 {this.renderCustomView()}
                  {this.renderMessageImage()}
-               </CardItem>
-               <CardItem>
                  {this.renderMessageText()}
                </CardItem>
-              <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
-                {this.renderTime()}
-                {this.renderTicks()}
-              </View>
            </Card>
            </Content>
            </Container>
@@ -239,7 +231,6 @@ export default class Bubble extends React.Component {
 
 }
 
-
 const styles = {
   left: StyleSheet.create({
     container: {
@@ -248,9 +239,8 @@ const styles = {
     },
     wrapper: {
       borderRadius: 15,
-      marginLeft: 60,
+      marginRight: 60,
       minHeight: 20,
-      justifyContent: 'flex-end',
     },
     containerToNext: {
       borderBottomLeftRadius: 3,
@@ -262,14 +252,12 @@ const styles = {
   right: StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'flex-end',
     },
     wrapper: {
       borderRadius: 15,
       backgroundColor: Color.defaultBlue,
       marginLeft: 60,
       minHeight: 20,
-      justifyContent: 'flex-end',
     },
     containerToNext: {
       borderBottomRightRadius: 3,
@@ -280,7 +268,6 @@ const styles = {
   }),
   bottom: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
   },
   tick: {
     fontSize: 10,
