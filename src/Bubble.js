@@ -1,3 +1,4 @@
+
 /* eslint no-use-before-define: ["error", { "variables": false }] */
 
 import PropTypes from 'prop-types';
@@ -153,6 +154,12 @@ export default class Bubble extends React.Component {
           this.props.containerStyle[this.props.position],
         ]}
       >
+<<<<<<< HEAD
+     <Container>
+     <Content>
+        <Card
+          style={[
+=======
      <TouchableWithoutFeedback
         onLongPress={this.onLongPress}
         accessibilityTraits="text"
@@ -160,13 +167,19 @@ export default class Bubble extends React.Component {
      <Container>
      <Content
         style={[
+>>>>>>> bc9359b3d625c9815023afc97273ff29747f5353
           styles[this.props.position].wrapper,
           this.props.wrapperStyle[this.props.position],
           this.handleBubbleToNext(),
           this.handleBubbleToPrevious(),
+<<<<<<< HEAD
+          ]}
+        >
+=======
      ]}
      >
         <Card>
+>>>>>>> bc9359b3d625c9815023afc97273ff29747f5353
         <CardItem>
             {this.renderCustomView()}
         </CardItem>
@@ -179,7 +192,10 @@ export default class Bubble extends React.Component {
         </Card>
       </Content>
     </Container>
+<<<<<<< HEAD
+=======
     </TouchableWithoutFeedback>
+>>>>>>> bc9359b3d625c9815023afc97273ff29747f5353
     </View>
     );
   }
@@ -231,6 +247,7 @@ export default class Bubble extends React.Component {
 
 }
 
+
 const styles = {
   left: StyleSheet.create({
     container: {
@@ -238,9 +255,14 @@ const styles = {
       alignItems: 'flex-start',
     },
     wrapper: {
+<<<<<<< HEAD
+      backgroundColor: Color.leftBubbleBackground,
+      minHeight: 20,
+=======
       borderRadius: 15,
       marginRight: 60,
       justifyContent: 'flex-end',
+>>>>>>> bc9359b3d625c9815023afc97273ff29747f5353
     },
     containerToNext: {
       borderBottomLeftRadius: 3,
