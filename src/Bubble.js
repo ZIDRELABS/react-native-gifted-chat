@@ -1,3 +1,4 @@
+
 /* eslint no-use-before-define: ["error", { "variables": false }] */
 
 import PropTypes from 'prop-types';
@@ -147,23 +148,20 @@ export default class Bubble extends React.Component {
 
   renderResponseText(){
     return (
-     <Container
+      <View
         style={[
-        styles[this.props.position].container,
-        this.props.containerStyle[this.props.position],
+          styles[this.props.position].container,
+          this.props.containerStyle[this.props.position],
         ]}
-        >
+      >
+     <Container>
      <Content>
-        <TouchableWithoutFeedback
-          onLongPress={this.onLongPress}
-          accessibilityTraits="text"
-            {...this.props.touchableProps}>
         <Card
           style={[
-            styles[this.props.position].wrapper,
-            this.props.wrapperStyle[this.props.position],
-            this.handleBubbleToNext(),
-            this.handleBubbleToPrevious(),
+          styles[this.props.position].wrapper,
+          this.props.wrapperStyle[this.props.position],
+          this.handleBubbleToNext(),
+          this.handleBubbleToPrevious(),
           ]}
         >
         <CardItem>
@@ -175,14 +173,10 @@ export default class Bubble extends React.Component {
         <CardItem>
             {this.renderMessageText()}
         </CardItem>
-        <CardItem footer style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
-              {this.renderTime()}
-              {this.renderTicks()}
-        </CardItem>
         </Card>
-    </TouchableWithoutFeedback>
       </Content>
     </Container>
+    </View>
     );
   }
 
@@ -233,6 +227,7 @@ export default class Bubble extends React.Component {
 
 }
 
+
 const styles = {
   left: StyleSheet.create({
     container: {
@@ -240,11 +235,8 @@ const styles = {
       alignItems: 'flex-start',
     },
     wrapper: {
-      borderRadius: 15,
       backgroundColor: Color.leftBubbleBackground,
-      marginRight: 60,
       minHeight: 20,
-      justifyContent: 'flex-end',
     },
     containerToNext: {
       borderBottomLeftRadius: 3,
@@ -259,6 +251,10 @@ const styles = {
       alignItems: 'flex-end',
     },
     wrapper: {
+      borderRadius: 15,
+      backgroundColor: Color.defaultBlue,
+      marginLeft: 60,
+      minHeight: 20,
       justifyContent: 'flex-end',
     },
     containerToNext: {
