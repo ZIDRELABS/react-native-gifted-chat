@@ -186,37 +186,41 @@ export default class Bubble extends React.Component {
 
   renderUserText(){
     return(
-      <View
-        style={[
-          styles[this.props.position].container,
-          this.props.containerStyle[this.props.position],
-        ]}
-      >
+      return(
         <View
           style={[
-            styles[this.props.position].wrapper,
-            this.props.wrapperStyle[this.props.position],
-            this.handleBubbleToNext(),
-            this.handleBubbleToPrevious(),
+            styles[this.props.position].container,
+            this.props.containerStyle[this.props.position],
           ]}
         >
-          <TouchableWithoutFeedback
-            onLongPress={this.onLongPress}
-            accessibilityTraits="text"
-            {...this.props.touchableProps}
+          <View
+            style={[
+              styles[this.props.position].wrapper,
+              this.props.wrapperStyle[this.props.position],
+              this.handleBubbleToNext(),
+              this.handleBubbleToPrevious(),
+            ]}
           >
-            <View>
-              {this.renderCustomView()}
-              {this.renderMessageImage()}
-              {this.renderMessageText()}
-              <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
-                {this.renderTime()}
-                {this.renderTicks()}
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback
+              onLongPress={this.onLongPress}
+              accessibilityTraits="text"
+              {...this.props.touchableProps}
+            >
+            <Container>
+             <Content>
+             <Card>
+                 <CardItem>
+                   {this.renderCustomView()}
+                   {this.renderMessageImage()}
+                   {this.renderMessageText()}
+                 </CardItem>
+             </Card>
+             </Content>
+             </Container>
+            </TouchableWithoutFeedback>
+          </View>
         </View>
-      </View>
+      );
     );
   }
 
@@ -252,10 +256,10 @@ const styles = {
   right: StyleSheet.create({
     container: {
       flex: 1,
+      alignItems: 'flex-end',
     },
     wrapper: {
       borderRadius: 15,
-      backgroundColor: Color.defaultBlue,
       marginLeft: 60,
       minHeight: 20,
     },
