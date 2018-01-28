@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   text: {
-    color: Color.defaultBlue,
+    color: Color.defaultGreen,
     fontWeight: '600',
     fontSize: 17,
     backgroundColor: Color.backgroundTransparent,

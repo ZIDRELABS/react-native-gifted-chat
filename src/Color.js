@@ -1,7 +1,7 @@
 export default {
   defaultColor: '#b2b2b2',
   backgroundTransparent: 'transparent',
-  defaultBlue: '#0084ff',
+  defaultGreen: '#79c879',
   leftBubbleBackground: '#f0f0f0',
   white: '#fff',
   carrot: '#e67e22',
