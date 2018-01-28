@@ -143,13 +143,13 @@ export default class Bubble extends React.Component {
 
   render() {
     return (
+      <View
+      style={[
+        styles[this.props.position].container,
+        this.props.containerStyle[this.props.position],
+      ]}>      
       <Container>
-      <Content
-        style={[
-          styles[this.props.position].container,
-          this.props.containerStyle[this.props.position],
-        ]}
-      >
+      <Content>
         <Card
           style={[
             styles[this.props.position].wrapper,
@@ -178,6 +178,7 @@ export default class Bubble extends React.Component {
         </Card>
       </Content>
       </Container>
+      </View>
     );
   }
 
