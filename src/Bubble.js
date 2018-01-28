@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
+  Card,
+  CardItem,
+} from 'native-base';
+import {
   Text,
   Clipboard,
   StyleSheet,
@@ -140,14 +144,14 @@ export default class Bubble extends React.Component {
           this.props.containerStyle[this.props.position],
         ]}
       >
-        <View
-          style={[
+      <Card
+           style={[
             styles[this.props.position].wrapper,
             this.props.wrapperStyle[this.props.position],
             this.handleBubbleToNext(),
             this.handleBubbleToPrevious(),
-          ]}
-        >
+      ]}>
+        <View>
           <TouchableWithoutFeedback
             onLongPress={this.onLongPress}
             accessibilityTraits="text"
@@ -164,6 +168,7 @@ export default class Bubble extends React.Component {
             </View>
           </TouchableWithoutFeedback>
         </View>
+        </Card>
       </View>
     );
   }
