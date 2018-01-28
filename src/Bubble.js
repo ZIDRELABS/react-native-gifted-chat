@@ -147,7 +147,6 @@ export default class Bubble extends React.Component {
         styles[this.props.position].container,
         this.props.containerStyle[this.props.position],
       ]}>
-      <Card>
           <View
             style={[
               styles[this.props.position].wrapper,
@@ -172,7 +171,6 @@ export default class Bubble extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           </View>
-      </Card>
       </View>
     );
   }
