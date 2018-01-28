@@ -1,18 +1,8 @@
-/* eslint no-use-before-define: ["error", { "variables": false }] */
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  Container,
-  Content,
-  Card,
-  CardItem,
-  Image,
-  Right,
-}  from 'native-base';
-import {
-  Clipboard,
   Text,
+  Clipboard,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
@@ -115,7 +105,9 @@ export default class Bubble extends React.Component {
     }
     if (currentMessage.sent || currentMessage.received) {
       return (
-        <View>
+        <View style={styles.tickView}>
+          {currentMessage.sent && <Text style={[styles.tick, this.props.tickStyle]}>✓</Text>}
+          {currentMessage.received && <Text style={[styles.tick, this.props.tickStyle]}>✓</Text>}
         </View>
       );
     }
@@ -143,20 +135,20 @@ export default class Bubble extends React.Component {
   render() {
     return (
       <View
-      style={[
-        styles[this.props.position].container,
-        this.props.containerStyle[this.props.position],
-      ]}>
-          <Card>
-          <View
-            style={[
-              styles[this.props.position].wrapper,
-              this.props.wrapperStyle[this.props.position],
-              this.handleBubbleToNext(),
-              this.handleBubbleToPrevious(),
-            ]}
-            >
-            <TouchableWithoutFeedback
+        style={[
+          styles[this.props.position].container,
+          this.props.containerStyle[this.props.position],
+        ]}
+      >
+        <View
+          style={[
+            styles[this.props.position].wrapper,
+            this.props.wrapperStyle[this.props.position],
+            this.handleBubbleToNext(),
+            this.handleBubbleToPrevious(),
+          ]}
+        >
+          <TouchableWithoutFeedback
             onLongPress={this.onLongPress}
             accessibilityTraits="text"
             {...this.props.touchableProps}
@@ -171,8 +163,7 @@ export default class Bubble extends React.Component {
               </View>
             </View>
           </TouchableWithoutFeedback>
-          </View>
-          </Card>
+        </View>
       </View>
     );
   }
