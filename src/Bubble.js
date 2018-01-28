@@ -7,7 +7,6 @@ import {
   Content,
   Card,
   CardItem,
-  Text,
   Image,
   Right,
 }  from 'native-base';
