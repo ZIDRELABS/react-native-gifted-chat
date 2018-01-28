@@ -115,7 +115,7 @@ export default class Bubble extends React.Component {
     }
     if (currentMessage.sent || currentMessage.received) {
       return (
-        <View style={styles.tickView}>
+        <View>
         </View>
       );
     }
