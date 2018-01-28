@@ -147,7 +147,7 @@ export default class Bubble extends React.Component {
       style={[
         styles[this.props.position].container,
         this.props.containerStyle[this.props.position],
-      ]}>      
+      ]}>
       <Container>
       <Content>
         <Card
@@ -158,11 +158,6 @@ export default class Bubble extends React.Component {
             this.handleBubbleToPrevious(),
           ]}
         >
-          <TouchableWithoutFeedback
-            onLongPress={this.onLongPress}
-            accessibilityTraits="text"
-            {...this.props.touchableProps}
-          >
             <CardItem cardbody>
               {this.renderCustomView()}
               {this.renderMessageImage()}
@@ -174,7 +169,7 @@ export default class Bubble extends React.Component {
                     {this.renderTicks()}
                 </Right>
             </CardItem>
-          </TouchableWithoutFeedback>
+
         </Card>
       </Content>
       </Container>
