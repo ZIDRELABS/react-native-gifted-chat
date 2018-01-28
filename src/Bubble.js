@@ -8,10 +8,10 @@ import {
   Card,
   CardItem,
   Image,
+  Text,
   Right,
 }  from 'native-base';
 import {
-  Text,
   Clipboard,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -116,8 +116,6 @@ export default class Bubble extends React.Component {
     if (currentMessage.sent || currentMessage.received) {
       return (
         <View style={styles.tickView}>
-          {currentMessage.sent && <Text style={[styles.tick, this.props.tickStyle]}>✓</Text>}
-          {currentMessage.received && <Text style={[styles.tick, this.props.tickStyle]}>✓</Text>}
         </View>
       );
     }
@@ -287,7 +285,7 @@ Bubble.propTypes = {
     left: ViewPropTypes.style,
     right: ViewPropTypes.style,
   }),
-  tickStyle: Text.propTypes.style,
+  tickStyle: null,
   containerToNextStyle: PropTypes.shape({
     left: ViewPropTypes.style,
     right: ViewPropTypes.style,
