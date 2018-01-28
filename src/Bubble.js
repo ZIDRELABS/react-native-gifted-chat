@@ -7,6 +7,8 @@ import {
   Content,
   Card,
   CardItem,
+  Text,
+  Image,
   Right,
 }  from 'native-base';
 import {
@@ -158,9 +160,9 @@ export default class Bubble extends React.Component {
       >
         <Card>
             <CardItem cardbody>
-              {this.renderCustomView()}
-              {this.renderMessageImage()}
-              {this.renderMessageText()}
+                    {this.renderCustomView()}
+            <Image>  {this.renderMessageImage()} </Image>
+            <Text>   {this.renderMessageText()} </Text>
             </CardItem>
             <CardItem style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
                 <Right>
