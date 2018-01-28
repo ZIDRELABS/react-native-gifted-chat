@@ -1,18 +1,14 @@
-
 /* eslint no-use-before-define: ["error", { "variables": false }] */
 
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import {
   Container,
-  Header,
   Content,
   Card,
   CardItem,
-  Body,
-} from 'native-base';
-
+  Right,
+}  from 'native-base';
 import {
   Text,
   Clipboard,
@@ -21,7 +17,6 @@ import {
   View,
   ViewPropTypes,
 } from 'react-native';
-
 
 import MessageText from './MessageText';
 import MessageImage from './MessageImage';
@@ -41,7 +36,7 @@ export default class Bubble extends React.Component {
     if (this.props.onLongPress) {
       this.props.onLongPress(this.context, this.props.currentMessage);
     } else if (this.props.currentMessage.text) {
-      const options = ['Copy Text','Cancel'];
+      const options = ['Copy Text', 'Cancel'];
       const cancelButtonIndex = options.length - 1;
       this.context.actionSheet().showActionSheetWithOptions(
         {
@@ -146,15 +141,16 @@ export default class Bubble extends React.Component {
     return null;
   }
 
-  renderResponseText(){
-    return(
-      <View
+  render() {
+    return (
+      <Container>
+      <Content
         style={[
           styles[this.props.position].container,
           this.props.containerStyle[this.props.position],
         ]}
       >
-        <View
+        <Card
           style={[
             styles[this.props.position].wrapper,
             this.props.wrapperStyle[this.props.position],
@@ -167,68 +163,22 @@ export default class Bubble extends React.Component {
             accessibilityTraits="text"
             {...this.props.touchableProps}
           >
-          <Container>
-           <Content>
-           <Card>
-               <CardItem>
-                 {this.renderCustomView()}
-                 {this.renderMessageImage()}
-                 {this.renderMessageText()}
-               </CardItem>
-           </Card>
-           </Content>
-           </Container>
+            <CardItem cardbody>
+              {this.renderCustomView()}
+              {this.renderMessageImage()}
+              {this.renderMessageText()}
+            </CardItem>
+            <CardItem style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
+                <Right>
+                    {this.renderTime()}
+                    {this.renderTicks()}
+                </Right>
+            </CardItem>
           </TouchableWithoutFeedback>
-        </View>
-      </View>
+        </Card>
+      </Content>
+      </Container>
     );
-  }
-
-  renderUserText(){
-    return(
-        <View
-          style={[
-            styles[this.props.position].container,
-            this.props.containerStyle[this.props.position],
-          ]}
-        >
-          <View
-            style={[
-              styles[this.props.position].wrapper,
-              this.props.wrapperStyle[this.props.position],
-              this.handleBubbleToNext(),
-              this.handleBubbleToPrevious(),
-            ]}
-          >
-            <TouchableWithoutFeedback
-              onLongPress={this.onLongPress}
-              accessibilityTraits="text"
-              {...this.props.touchableProps}
-            >
-            <Container>
-             <Content>
-             <Card>
-                 <CardItem>
-                   {this.renderCustomView()}
-                   {this.renderMessageImage()}
-                   {this.renderMessageText()}
-                 </CardItem>
-             </Card>
-             </Content>
-             </Container>
-            </TouchableWithoutFeedback>
-          </View>
-        </View>
-      );
-  }
-
-  render() {
-      if(this.props.position == 'right'){
-        this.renderUserText()
-      }
-      return(
-        this.renderResponseText()
-      );
   }
 
 }
@@ -241,8 +191,10 @@ const styles = {
     },
     wrapper: {
       borderRadius: 15,
+      backgroundColor: Color.leftBubbleBackground,
       marginRight: 60,
       minHeight: 20,
+      justifyContent: 'flex-end',
     },
     containerToNext: {
       borderBottomLeftRadius: 3,
@@ -258,8 +210,10 @@ const styles = {
     },
     wrapper: {
       borderRadius: 15,
+      backgroundColor: Color.defaultGreen,
       marginLeft: 60,
       minHeight: 20,
+      justifyContent: 'flex-end',
     },
     containerToNext: {
       borderBottomRightRadius: 3,
@@ -270,6 +224,7 @@ const styles = {
   }),
   bottom: {
     flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
   tick: {
     fontSize: 10,
