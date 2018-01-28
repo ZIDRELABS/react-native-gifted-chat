@@ -5,7 +5,7 @@
         "jest": true
     },
     "rules": {
-       "linebreak-style": ["error", process.env.NODE_ENV === 'prod' ? "unix" : "windows"],
+       "linebreak-style": ["error", "windows"],
         "no-underscore-dangle": 0,
         "import/no-unresolved": [
             2,

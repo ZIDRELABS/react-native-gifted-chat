@@ -148,16 +148,15 @@ export default class Bubble extends React.Component {
         styles[this.props.position].container,
         this.props.containerStyle[this.props.position],
       ]}>
-      <Container>
-      <Content>
-        <Card
-          style={[
-            styles[this.props.position].wrapper,
-            this.props.wrapperStyle[this.props.position],
-            this.handleBubbleToNext(),
-            this.handleBubbleToPrevious(),
-          ]}
-        >
+      <View
+      style={[
+        styles[this.props.position].wrapper,
+        this.props.wrapperStyle[this.props.position],
+        this.handleBubbleToNext(),
+        this.handleBubbleToPrevious(),
+      ]}
+      >
+        <Card>
             <CardItem cardbody>
               {this.renderCustomView()}
               {this.renderMessageImage()}
@@ -169,10 +168,8 @@ export default class Bubble extends React.Component {
                     {this.renderTicks()}
                 </Right>
             </CardItem>
-
         </Card>
-      </Content>
-      </Container>
+        </View>
       </View>
     );
   }
