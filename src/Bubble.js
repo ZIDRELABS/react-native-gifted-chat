@@ -147,6 +147,7 @@ export default class Bubble extends React.Component {
         styles[this.props.position].container,
         this.props.containerStyle[this.props.position],
       ]}>
+          <Card>
           <View
             style={[
               styles[this.props.position].wrapper,
@@ -171,6 +172,7 @@ export default class Bubble extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           </View>
+          </Card>
       </View>
     );
   }
@@ -185,6 +187,7 @@ const styles = {
     },
     wrapper: {
       borderRadius: 15,
+      backgroundColor: Color.leftBubbleBackground,
       marginRight: 60,
       minHeight: 20,
       justifyContent: 'flex-end',
@@ -203,6 +206,7 @@ const styles = {
     },
     wrapper: {
       borderRadius: 15,
+      backgroundColor: Color.defaultBlue,
       marginLeft: 60,
       minHeight: 20,
       justifyContent: 'flex-end',
@@ -285,7 +289,7 @@ Bubble.propTypes = {
     left: ViewPropTypes.style,
     right: ViewPropTypes.style,
   }),
-  tickStyle: null,
+  tickStyle: Text.propTypes.style,
   containerToNextStyle: PropTypes.shape({
     left: ViewPropTypes.style,
     right: ViewPropTypes.style,
