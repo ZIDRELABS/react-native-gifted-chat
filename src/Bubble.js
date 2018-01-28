@@ -8,11 +8,11 @@ import {
   Card,
   CardItem,
   Image,
-  Text,
   Right,
 }  from 'native-base';
 import {
   Clipboard,
+  Text,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
