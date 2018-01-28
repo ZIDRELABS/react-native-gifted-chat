@@ -156,9 +156,7 @@ export default class Bubble extends React.Component {
       ]}
       >
         <Card>
-            <CardItem cardbody>
-                    {this.renderCustomView()}
-            <Image>  {this.renderMessageImage()} </Image>
+            <CardItem cardbody>                 
             <Text>   {this.renderMessageText()} </Text>
             </CardItem>
             <CardItem style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
