@@ -9,6 +9,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Animated, Platform, StyleSheet, View } from 'react-native';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 import ActionSheet from '@expo/react-native-action-sheet';
 import moment from 'moment';
@@ -281,9 +282,7 @@ class GiftedChat extends React.Component {
   }
 
   onKeyboardDidShow(e) {
-    if (Platform.OS === 'android') {
-      this.onKeyboardWillShow(e);
-    }
+    {Platform.OS === 'android' ? <KeyboardSpacer /> : null }
     this.setIsTypingDisabled(false);
   }
 
@@ -481,6 +480,7 @@ class GiftedChat extends React.Component {
             {this.renderInputToolbar()}
           </View>
         </ActionSheet>
+
       );
     }
     return (

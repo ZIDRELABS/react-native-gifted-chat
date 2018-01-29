@@ -156,7 +156,7 @@ export default class Bubble extends React.Component {
       ]}>
 
       <CardItem header>
-        <H1>{this.props.label}</H1>
+        <H1>Agent</H1>
       </CardItem>
 
         {this.renderMessageImage()}
