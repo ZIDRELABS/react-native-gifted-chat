@@ -151,26 +151,18 @@ export default class Bubble extends React.Component {
             this.handleBubbleToNext(),
             this.handleBubbleToPrevious(),
       ]}>
+
+        {this.renderMessageImage()}
+
         <View>
           <TouchableWithoutFeedback
             onLongPress={this.onLongPress}
             accessibilityTraits="text"
             {...this.props.touchableProps}
           >
-          <CardItem>
-            <View>
-              {this.renderCustomView()}
-            </View>
-          </CardItem>
-
-          <CardItem>
-            <View>
-              {this.renderMessageImage()}
-              {this.renderMessageText()}
-            </View>
-          </CardItem>
-
-              <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
+          {this.renderCustomView()}
+          {this.renderMessageText()}
+          <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
                 {this.renderTime()}
                 {this.renderTicks()}
               </View>
