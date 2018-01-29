@@ -481,14 +481,13 @@ class GiftedChat extends React.Component {
             {this.renderMessages()}
             {this.renderInputToolbar()}
           </View>
+          {Platform.OS === 'android' ? <KeyboardSpacer /> : null }
         </ActionSheet>
-        {Platform.OS === 'android' ? <KeyboardSpacer /> : null }
       );
     }
     return (
       <View style={styles.container} onLayout={this.onInitialLayoutViewLayout}>
         {this.renderLoading()}
-        {Platform.OS === 'android' ? <KeyboardSpacer /> : null }
       </View>
     );
   }
