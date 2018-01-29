@@ -220,9 +220,9 @@ export default class Bubble extends React.Component {
   render() {
 
     if(this.props.position.left){
-      this.renderLeftBubble();
+    return this.renderLeftBubble();
     }
-    this.renderRightBubble();
+    return this.renderRightBubble();
   }
 
 }
