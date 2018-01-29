@@ -155,11 +155,6 @@ export default class Bubble extends React.Component {
         {this.renderMessageImage()}
 
         <View>
-          <TouchableWithoutFeedback
-            onLongPress={this.onLongPress}
-            accessibilityTraits="text"
-            {...this.props.touchableProps}
-          >
           <View>
               {this.renderCustomView()}
               {this.renderMessageText()}
@@ -168,7 +163,6 @@ export default class Bubble extends React.Component {
                 {this.renderTime()}
                 {this.renderTicks()}
               </View>
-          </TouchableWithoutFeedback>
         </View>
         </Card>
       </View>
