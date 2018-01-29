@@ -3,6 +3,8 @@ import React from 'react';
 import {
   Card,
   CardItem,
+  H1,
+  Body,
 } from 'native-base';
 import {
   Text,
@@ -136,7 +138,53 @@ export default class Bubble extends React.Component {
     return null;
   }
 
-  render() {
+  renderLeftBubble(){
+
+    return (
+      <View
+        style={[
+          styles[this.props.position].container,
+          this.props.containerStyle[this.props.position],
+        ]}
+      >
+      <Card
+           style={[
+            styles[this.props.position].wrapper,
+            this.props.wrapperStyle[this.props.position],
+            this.handleBubbleToNext(),
+            this.handleBubbleToPrevious(),
+      ]}>
+
+      <CardItem header>
+        <H1>{label}</H1>
+      </CardItem>
+
+        {this.renderMessageImage()}
+
+        <CardItem>
+          <Body>
+            {this.renderMessageText()}
+          </Body>
+        </CardItem>
+
+        <View>
+          <View>
+              {this.renderCustomView()}
+          </View>
+
+          <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
+                {this.renderTime()}
+          </View>
+
+        </View>
+        </Card>
+      </View>
+    );
+
+  }
+
+  renderRightBubble(){
+
     return (
       <View
         style={[
@@ -161,12 +209,20 @@ export default class Bubble extends React.Component {
           </View>
           <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
                 {this.renderTime()}
-                {this.renderTicks()}
-              </View>
+          </View>
         </View>
         </Card>
       </View>
     );
+
+  }
+
+  render() {
+
+    if(this.props.position.left){
+      this.renderLeftBubble();
+    }
+    this.renderRightBubble();
   }
 
 }
@@ -175,13 +231,9 @@ const styles = {
   left: StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'flex-start',
     },
     wrapper: {
       backgroundColor: Color.leftBubbleBackground,
-      marginRight: 60,
-      minHeight: 20,
-      justifyContent: 'flex-end',
     },
     containerToNext: {
       borderBottomLeftRadius: 3,
@@ -228,6 +280,7 @@ Bubble.contextTypes = {
 };
 
 Bubble.defaultProps = {
+  label: 'Agent',
   touchableProps: {},
   onLongPress: null,
   renderMessageImage: null,
@@ -255,6 +308,7 @@ Bubble.defaultProps = {
 };
 
 Bubble.propTypes = {
+  label: PropTypes.string,
   user: PropTypes.object.isRequired,
   touchableProps: PropTypes.object,
   onLongPress: PropTypes.func,
