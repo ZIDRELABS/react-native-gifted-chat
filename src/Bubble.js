@@ -155,10 +155,6 @@ export default class Bubble extends React.Component {
             this.handleBubbleToPrevious(),
       ]}>
 
-      <CardItem header>
-        <H1>Agent</H1>
-      </CardItem>
-
         {this.renderMessageImage()}
 
         <CardItem>
@@ -199,6 +195,10 @@ export default class Bubble extends React.Component {
             this.handleBubbleToNext(),
             this.handleBubbleToPrevious(),
       ]}>
+
+      <CardItem header>
+        <H1>{this.props.label}</H1>
+      </CardItem>
 
         {this.renderMessageImage()}
 

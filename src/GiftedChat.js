@@ -282,7 +282,9 @@ class GiftedChat extends React.Component {
   }
 
   onKeyboardDidShow(e) {
-    {Platform.OS === 'android' ? <KeyboardSpacer /> : null }
+    if (Platform.OS === 'android') {
+      this.onKeyboardWillShow(e);
+    }
     this.setIsTypingDisabled(false);
   }
 
@@ -480,12 +482,13 @@ class GiftedChat extends React.Component {
             {this.renderInputToolbar()}
           </View>
         </ActionSheet>
-
+        {Platform.OS === 'android' ? <KeyboardSpacer /> : null }
       );
     }
     return (
       <View style={styles.container} onLayout={this.onInitialLayoutViewLayout}>
         {this.renderLoading()}
+        {Platform.OS === 'android' ? <KeyboardSpacer /> : null }
       </View>
     );
   }
