@@ -481,7 +481,7 @@ class GiftedChat extends React.Component {
             {this.renderMessages()}
             {this.renderInputToolbar()}
           </View>
-          {Platform.OS === 'android' ? <KeyboardSpacer /> : null }
+          <View>{Platform.OS === 'android' ? <KeyboardSpacer /> : null }</View>
         </ActionSheet>
       );
     }
