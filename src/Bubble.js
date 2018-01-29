@@ -160,8 +160,10 @@ export default class Bubble extends React.Component {
             accessibilityTraits="text"
             {...this.props.touchableProps}
           >
-          {this.renderCustomView()}
-          {this.renderMessageText()}
+          <View>
+              {this.renderCustomView()}
+              {this.renderMessageText()}
+          </View>
           <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
                 {this.renderTime()}
                 {this.renderTicks()}
