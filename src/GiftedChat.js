@@ -473,6 +473,13 @@ class GiftedChat extends React.Component {
     return null;
   }
 
+  renderKeyboardSpacer(){
+    if(Platform.OS === 'android'){
+      return (<KeyboardSpacer/>);
+    }
+    return null;
+  }
+
   render() {
     if (this.state.isInitialized === true) {
       return (
@@ -480,8 +487,8 @@ class GiftedChat extends React.Component {
           <View style={styles.container} onLayout={this.onMainViewLayout}>
             {this.renderMessages()}
             {this.renderInputToolbar()}
+            {this.renderKeyboardSpacer()}
           </View>
-          <View>{Platform.OS === 'android' ? <KeyboardSpacer /> : null }</View>
         </ActionSheet>
       );
     }
