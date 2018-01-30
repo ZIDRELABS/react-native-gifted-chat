@@ -2,8 +2,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, View, Keyboard, ViewPropTypes, Dimensions,Platform } from 'react-native';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
+import { StyleSheet, View, Keyboard, ViewPropTypes, Dimensions } from 'react-native';
 
 import Composer from './Composer';
 import Send from './Send';
@@ -80,13 +79,6 @@ export default class InputToolbar extends React.Component {
     return null;
   }
 
-  renderKeyboardSpacer(){
-      if(Platform.OS === 'android'){
-        return (<KeyboardSpacer/>);
-      }
-      return null;
-  }
-
   render() {
     return (
       <View
@@ -96,7 +88,7 @@ export default class InputToolbar extends React.Component {
           {this.renderActions()}
           {this.renderComposer()}
           {this.renderSend()}
-          {this.renderKeyboardSpacer()}
+
         </View>
         {this.renderAccessory()}
       </View>
