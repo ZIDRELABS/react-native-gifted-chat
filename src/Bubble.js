@@ -1,17 +1,13 @@
-/* eslint no-use-before-define: ["error", { "variables": false }] */
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  Container,
-  Content,
   Card,
   CardItem,
-  Image,
-  Text,
-  Right,
-}  from 'native-base';
+  H1,
+  Body,
+} from 'native-base';
 import {
+  Text,
   Clipboard,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -115,7 +111,9 @@ export default class Bubble extends React.Component {
     }
     if (currentMessage.sent || currentMessage.received) {
       return (
-        <View>
+        <View style={styles.tickView}>
+          {currentMessage.sent && <Text style={[styles.tick, this.props.tickStyle]}>✓</Text>}
+          {currentMessage.received && <Text style={[styles.tick, this.props.tickStyle]}>✓</Text>}
         </View>
       );
     }
@@ -140,39 +138,92 @@ export default class Bubble extends React.Component {
     return null;
   }
 
-  render() {
+  renderLeftBubble(){
+
     return (
       <View
-      style={[
-        styles[this.props.position].container,
-        this.props.containerStyle[this.props.position],
+        style={[
+          styles[this.props.position].container,
+          this.props.containerStyle[this.props.position],
+        ]}
+      >
+      
+      <CardItem header>
+        <H1>{this.props.label}</H1>
+      </CardItem>
+
+      <Card
+           style={[
+            styles[this.props.position].wrapper,
+            this.props.wrapperStyle[this.props.position],
+            this.handleBubbleToNext(),
+            this.handleBubbleToPrevious(),
       ]}>
-          <View
-            style={[
-              styles[this.props.position].wrapper,
-              this.props.wrapperStyle[this.props.position],
-              this.handleBubbleToNext(),
-              this.handleBubbleToPrevious(),
-            ]}
-            >
-            <TouchableWithoutFeedback
-            onLongPress={this.onLongPress}
-            accessibilityTraits="text"
-            {...this.props.touchableProps}
-          >
-            <View>
+
+        {this.renderMessageImage()}
+
+        <CardItem>
+          <Body>
+            {this.renderMessageText()}
+          </Body>
+        </CardItem>
+
+        <View>
+          <View>
               {this.renderCustomView()}
-              {this.renderMessageImage()}
-              {this.renderMessageText()}
-              <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
-                {this.renderTime()}
-                {this.renderTicks()}
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
           </View>
+
+          <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
+                {this.renderTime()}
+          </View>
+
+        </View>
+        </Card>
       </View>
     );
+
+  }
+
+  renderRightBubble(){
+
+    return (
+      <View
+        style={[
+          styles[this.props.position].container,
+          this.props.containerStyle[this.props.position],
+        ]}
+      >
+      <Card
+           style={[
+            styles[this.props.position].wrapper,
+            this.props.wrapperStyle[this.props.position],
+            this.handleBubbleToNext(),
+            this.handleBubbleToPrevious(),
+      ]}>
+
+        {this.renderMessageImage()}
+
+        <View>
+          <View>
+              {this.renderCustomView()}
+              {this.renderMessageText()}
+          </View>
+          <View style={[styles.bottom, this.props.bottomContainerStyle[this.props.position]]}>
+                {this.renderTime()}
+          </View>
+        </View>
+        </Card>
+      </View>
+    );
+
+  }
+
+  render() {
+
+    if(this.props.position.left){
+    return this.renderLeftBubble();
+    }
+    return this.renderRightBubble();
   }
 
 }
@@ -181,13 +232,9 @@ const styles = {
   left: StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'flex-start',
     },
     wrapper: {
-      borderRadius: 15,
-      marginRight: 60,
-      minHeight: 20,
-      justifyContent: 'flex-end',
+      backgroundColor: Color.leftBubbleBackground,
     },
     containerToNext: {
       borderBottomLeftRadius: 3,
@@ -202,7 +249,7 @@ const styles = {
       alignItems: 'flex-end',
     },
     wrapper: {
-      borderRadius: 15,
+      backgroundColor: Color.defaultBlue,
       marginLeft: 60,
       minHeight: 20,
       justifyContent: 'flex-end',
@@ -234,6 +281,7 @@ Bubble.contextTypes = {
 };
 
 Bubble.defaultProps = {
+  label: 'Agent',
   touchableProps: {},
   onLongPress: null,
   renderMessageImage: null,
@@ -261,6 +309,7 @@ Bubble.defaultProps = {
 };
 
 Bubble.propTypes = {
+  label: PropTypes.string,
   user: PropTypes.object.isRequired,
   touchableProps: PropTypes.object,
   onLongPress: PropTypes.func,
@@ -285,7 +334,7 @@ Bubble.propTypes = {
     left: ViewPropTypes.style,
     right: ViewPropTypes.style,
   }),
-  tickStyle: null,
+  tickStyle: Text.propTypes.style,
   containerToNextStyle: PropTypes.shape({
     left: ViewPropTypes.style,
     right: ViewPropTypes.style,

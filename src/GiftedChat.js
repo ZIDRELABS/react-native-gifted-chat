@@ -9,6 +9,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Animated, Platform, StyleSheet, View } from 'react-native';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
+
 
 import ActionSheet from '@expo/react-native-action-sheet';
 import moment from 'moment';
@@ -472,15 +474,25 @@ class GiftedChat extends React.Component {
     return null;
   }
 
+  renderKeyboardSpacer(){
+    if(Platform.OS === 'android'){
+      return (<KeyboardSpacer/>);
+    }
+    return null;
+  }
+
   render() {
     if (this.state.isInitialized === true) {
       return (
+        <View style = {{flex : 1}}>
         <ActionSheet ref={(component) => (this._actionSheetRef = component)}>
           <View style={styles.container} onLayout={this.onMainViewLayout}>
             {this.renderMessages()}
             {this.renderInputToolbar()}
-          </View>
+          </View>          
         </ActionSheet>
+        {this.renderKeyboardSpacer()}
+        </View>
       );
     }
     return (
