@@ -147,6 +147,11 @@ export default class Bubble extends React.Component {
           this.props.containerStyle[this.props.position],
         ]}
       >
+      
+      <CardItem header>
+        <H1>{this.props.label}</H1>
+      </CardItem>
+
       <Card
            style={[
             styles[this.props.position].wrapper,
@@ -154,10 +159,6 @@ export default class Bubble extends React.Component {
             this.handleBubbleToNext(),
             this.handleBubbleToPrevious(),
       ]}>
-
-      <CardItem header>
-        <H1>{this.props.position.label}</H1>
-      </CardItem>
 
         {this.renderMessageImage()}
 
@@ -232,7 +233,6 @@ const styles = {
     container: {
       flex: 1,
     },
-    label: 'Agent',
     wrapper: {
       backgroundColor: Color.leftBubbleBackground,
     },
@@ -281,6 +281,7 @@ Bubble.contextTypes = {
 };
 
 Bubble.defaultProps = {
+  label: 'Agent',
   touchableProps: {},
   onLongPress: null,
   renderMessageImage: null,
@@ -308,6 +309,7 @@ Bubble.defaultProps = {
 };
 
 Bubble.propTypes = {
+  label: PropTypes.string,
   user: PropTypes.object.isRequired,
   touchableProps: PropTypes.object,
   onLongPress: PropTypes.func,
